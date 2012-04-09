@@ -60,20 +60,23 @@ class DCPU16:
 			0x1f: lambda: self.nextWord(),
 		}
 		
-	def nextWord(self):
+	def nextWord(self):		
+		word = self.memory[self.pc]
 		self.pc += 1
-		return self.memory[self.pc]
+		return word
 	
 	def POP(self):
+		word = self.memory[self.sp]
 		self.sp +=1
-		return self.memory[self.sp]
+		return word
 		
 	def PEEK(self):
 		return self.memory[self.sp]
 		
-	def PUSH(self):
+	def PUSH(self):		
+		word = self.memory[self.sp]
 		self.sp = self.sp - 1
-		return self.memory[self.sp]
+		return word
 	
 	def SET(self, a, b):
 		a = b
